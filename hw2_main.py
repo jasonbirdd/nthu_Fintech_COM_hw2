@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 TAIEX_df = pd.read_csv("TAIEX_fetch.csv")
 TAIEX_df = TAIEX_df.drop(columns=["Adj Close"])
 # In[2]
-ret = triple_barrier(TAIEX_df.Close, 1.04, 0.98, 20)
+ret = triple_barrier(TAIEX_df.Close, 1.04, 0.98, 20) #use funciton triple_barrier in hw2_models
 TAIEX_df["TB_label"] = ret.triple_barrier_signal
 # In[3A] 
 moving_avg_day = [5,10,20,60]
@@ -41,13 +41,12 @@ TAIEX_array = TAIEX_array[59:, :]
 pca = PCA().fit(TAIEX_array)
 plt.figure()
 plt.plot(np.cumsum(pca.explained_variance_ratio_))
+plt.title("TAIEX")
 plt.xlabel('number of principle components')
 plt.ylabel('cumulative explained variance')
 pca = PCA(n_components = 2)
 pca_feature = pca.fit_transform(TAIEX_array)
-# exp = pca.explained_variance_ratio_
-# eigen_vec=pca.components_
-# eigen_val = np.around(pca.explained_variance_ratio_,decimals = 5)
+plt.show()
 
 
 # In[4B]
@@ -56,11 +55,10 @@ for label in set(targets):
     idx = np.where(np.array(targets) == label)[0]
     plt.scatter(pca_feature[idx, 0], pca_feature[idx, 1], label=label)
 plt.legend()
+plt.title("TAIEX")
 plt.show()
 
 
-# In[4C]
-# PCA的優勢在於可以降維資料易於分析
 
 
 

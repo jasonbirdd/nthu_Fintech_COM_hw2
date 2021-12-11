@@ -39,11 +39,10 @@ for month in date_list:
         temp = {"date":data1[index][0], "open":data1[index][1], "high":data1[index][2], "low":data1[index][3], "close":data1[index][4], "volume":data2[index][1]}
         TAIEX_df = TAIEX_df.append(temp,  ignore_index=True)
 
-#%%
 # TAIEX_df.to_csv("TAIEX.csv")
 
 
 #%% yfinance
 import yfinance as yf 
 TAI = yf.download('^TWII',start='2012-12-01',end='2018-12-02')
-TAI.to_csv("TAIEX_new.csv")
+# TAI.to_csv("TAIEX_fetch.csv")
